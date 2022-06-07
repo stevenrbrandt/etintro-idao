@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+
+  perimeter-workspace:
+    build:
+        context: .
+        dockerfile: Dockerfile
+    image: einsteintoolkit/et-workshop
