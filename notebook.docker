@@ -1,0 +1,27 @@
+# Copyright (c) 2019 Steven R. Brandt, and Roland Haas
+#
+# Distributed under the LGPL
+FROM et-base
+
+USER root
+WORKDIR /
+
+ENV PKG_CONFIG_PATH /usr/share/pkgconfig:/usr/lib/x86_64-linux-gnu/pkgconfig:/usr/lib/pkgconfig
+
+RUN pip3 install kuibit scons termcolor kuibit==1.3.3 mpld3
+RUN apt-get update -y
+RUN apt-get install -y pgplot5 
+
+RUN mkdir -p /tutorial && chmod 755 /tutorial
+RUN mkdir -p /jupyter-et && chmod 755 /jupyter-et
+COPY start-notebook.sh /jupyter-et/
+COPY Initial_Data.tgz /usr/local/data/
+COPY notebooks/*.ipynb /tutorial/
+RUN cp /tutorial/*.ipynb /etc/skel/
+
+ENV NB_USER jovyan
+RUN useradd -m $NB_USER -s /bin/bash
+USER $NB_USER
+ENV USER $NB_USER
+
+CMD ["bash","/jupyter-et/start-notebook.sh"]
