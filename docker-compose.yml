@@ -6,4 +6,4 @@ services:
     build:
         context: .
         dockerfile: Dockerfile
-    image: einsteintoolkit/et-workshop
+    image: einsteintoolkit/et2022uidaho-workshop

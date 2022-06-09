@@ -5,4 +5,4 @@ services:
     build:
         context: .
         dockerfile: base.docker
-    image: et-base
+    image: einsteintoolkit/et2022uidaho-base

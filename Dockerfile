@@ -1,7 +1,7 @@
 # FROM ubuntu:18.04
 # FROM nvidia/cuda:11.5.2-devel-ubuntu20.04
 #FROM nvidia/cuda:11.0.3-devel-ubuntu20.04
-FROM einsteintoolkit/et-notebook
+FROM einsteintoolkit/et2022uidaho-notebook
 USER root
 
 ENV DEBIAN_FRONTEND=noninteractive

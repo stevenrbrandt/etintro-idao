@@ -9,9 +9,9 @@ services:
     build:
         context: .
         dockerfile: notebook.docker
-    image: einsteintoolkit/et-notebook
+    image: einsteintoolkit/et2022uidaho-notebook
     hostname: et-notebook
-    container_name: et-notebook
+    container_name: einsteintoolkit/et2022uidaho-notebook
     ports:
       - 8888:8888
     volumes:

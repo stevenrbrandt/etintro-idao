@@ -12,9 +12,9 @@ fi
 cd
 
 # BUILD CACTUS
-curl -kLO https://raw.githubusercontent.com/gridaphobe/CRL/ET_2021_11/GetComponents
+curl -kLO https://raw.githubusercontent.com/gridaphobe/CRL/ET_2022_05/GetComponents
 chmod a+x GetComponents
-./GetComponents --parallel https://bitbucket.org/einsteintoolkit/manifest/raw/ET_2021_11/einsteintoolkit.th
+./GetComponents --parallel https://bitbucket.org/einsteintoolkit/manifest/raw/ET_2022_05/einsteintoolkit.th
 cd ~/Cactus
 ./simfactory/bin/sim setup-silent
 #echo 'LIBDIRS = /lib/x86_64-linux-gnu' >> repos/simfactory2/mdb/optionlists/generic.cfg
@@ -31,7 +31,6 @@ ActiveThorns = "Time MoL"
 ActiveThorns = "Coordbase CartGrid3d Boundary StaticConformal"
 ActiveThorns = "SymBase ADMBase TmunuBase HydroBase InitBase ADMCoupling ADMMacros"
 ActiveThorns = "IOUtil"
-ActiveThorns = "Formaline"
 ActiveThorns = "SpaceMask CoordGauge Constants LocalReduce aeilocalinterp LoopControl"
 ActiveThorns = "Carpet CarpetLib CarpetReduce CarpetRegrid2 CarpetInterp"
 ActiveThorns = "CarpetIOASCII CarpetIOScalar CarpetIOHDF5 CarpetIOBasic"
@@ -301,6 +300,7 @@ PYTHONUSERBASE=$PWD/python pip3 install kuibit==1.3.4
 # run simulation
 ./simfactory/bin/sim create tov_ET --configuration sim --parfile=par/tov_ET.par
 ./simfactory/bin/sim submit tov_ET --cores=2 --num-threads=1 --walltime=0:20:00
+./simfactory/bin/sim show-output --follow tov_ET
 
 ls ./exe/cactus_sim
 
