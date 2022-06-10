@@ -18,10 +18,20 @@ Finally the tutorial container image:
 sudo docker-compose -f docker-compose.yml build
 ```
 
+# locally test
+
+```
+sudo docker-compose run -v home_nbfs:/nfs/home/root  perimeter-workspace
+```
+
+Then get ip address from `docker ps` and `docker inspect XXX`.
+
 # push to dockerhub
 
 ```
-sudo docker push einsteintoolkit/et2022uidaho-tutorial
+for c in .base .notebook ''; do
+  sudo docker-compose -f docker-compose$c.yml push
+done
 ```
 
 # update server
